@@ -1,8 +1,7 @@
 import json
 import boto3
 def lambda_handler(event, context):
-        body = json.loads(event['body'])
-         
+        body = event['body']
         customer_id = body['customer_id']
 
         dynamodb = boto3.resource('dynamodb')
