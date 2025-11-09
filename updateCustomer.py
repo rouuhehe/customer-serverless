@@ -1,9 +1,6 @@
-import json
+import json, boto3
 from time import time
-import uuid
-import boto3
 from botocore.exceptions import ClientError
-from datetime import datetime
 
 def lambda_handler(event, context):
         dynamodb = boto3.resource('dynamodb')

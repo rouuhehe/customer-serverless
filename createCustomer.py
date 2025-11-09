@@ -1,9 +1,6 @@
-import json
+import json, uuid, boto3
 from time import time
-import uuid
-import boto3
 from botocore.exceptions import ClientError
-import bcrypt
 
 def lambda_handler(event, context):
     try:
@@ -13,7 +10,6 @@ def lambda_handler(event, context):
             body = event  
 
         customer_id = str(uuid.uuid4())
-        password_hashed = bcrypt.hashpw(str(body['password']).encode('utf-8'), bcrypt.gensalt()).decode('utf-8')
         now = str(int(time()))
 
         customer_data = {
@@ -23,7 +19,7 @@ def lambda_handler(event, context):
             'createdAt': now,
             'updatedAt': now,
             'isActive': True,
-            'password_hashed': password_hashed,
+            'password_hashed': body['password'],
             'phoneNumber': str(body['phone_number'])
         }
 
