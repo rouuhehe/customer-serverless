@@ -8,7 +8,7 @@ def lambda_handler(event, context):
 
         # a diferencia de los otros lambdas, aqui los parametros vienen por pathParameters
         customer_id = event['pathParameters']['customerID']
-        body = json.loads(event['body'])
+        body = event['body']
 
         allowed = ['name', 'email', 'phoneNumber', 'password']
         update_fields = {k: v for k, v in body.items() if k in allowed}

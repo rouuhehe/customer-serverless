@@ -4,15 +4,13 @@ def lambda_handler(event, context):
         body = json.loads(event['body'])
          
         customer_id = body['customer_id']
-        email = body['email']
 
         dynamodb = boto3.resource('dynamodb')
         table = dynamodb.Table('t_customers')
 
         response = table.get_item(
                 Key = {
-                    'customer_id': customer_id,
-                    'email': email
+                    'customer_id': customer_id
                 }
         )
 

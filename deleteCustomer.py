@@ -11,7 +11,6 @@ def lambda_handler(event, context):
             body = event  
          
         customer_id = body['customer_id']
-        email = body['email']
         now = str(int(time()))
 
         dynamodb = boto3.resource('dynamodb')
@@ -20,8 +19,7 @@ def lambda_handler(event, context):
         try:
                 response = table.update_item(
                     Key = {
-                            'customer_id': customer_id,
-                            'email': email
+                            'customer_id': customer_id
                     },
                     UpdateExpression = "set isActive = :tilin , updatedAt = :v",
                     ExpressionAttributeValues = {

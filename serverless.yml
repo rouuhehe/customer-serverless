@@ -16,43 +16,43 @@ functions:
     handler: createCustomer.lambda_handler
     events:
       - http:
-          path: /customer/crear
+          path: /customer/account/create
           method: post
           cors: true
           integration: lambda
 
-  obtener:
+  getCustomer:
     handler: getCustomer.lambda_handler
     events:
       - http:
-          path: /customer/obtener
-          method: post
+          path: /customer/account/about
+          method: get
           cors: true
           integration: lambda
 
-  actualizar:
+  updateCustomer:
     handler: updateCustomer.lambda_handler
     events:
       - http:
-          path: /customer/{customerID}
+          path: /customer/account/update
           method: put
           cors: true
           integration: lambda
 
-  activar:
+  activateCustomer:
     handler: activateCustomer.lambda_handler
     events:
       - http:
-          path: /customer/activar
+          path: /customer/account/activate
           method: post
           cors: true
           integration: lambda
 
-  desactivar:
+  deleteCustomer:
     handler: deleteCustomer.lambda_handler
     events:
       - http:
-          path: /customer/desactivar
+          path: /customer/account/delete
           method: post
           cors: true
           integration: lambda
