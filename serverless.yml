@@ -69,8 +69,6 @@ resources:
         KeySchema:
           - AttributeName: customer_id
             KeyType: HASH
-          - AttributeName: email
-            KeyType: RANGE
         BillingMode: PAY_PER_REQUEST
         GlobalSecondaryIndexes:
               - IndexName: email-index
