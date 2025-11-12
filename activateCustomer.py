@@ -1,4 +1,4 @@
-import json, boto3
+import json, boto3, os
 from time import time
 from botocore.exceptions import ClientError
 from datetime import datetime
@@ -8,13 +8,14 @@ def lambda_handler(event, context):
             body = json.loads(event["body"]) if isinstance(event["body"], str) else event["body"]
         else:
             body = event  
-         
+
+        table_name = os.environ["TABLE_NAME"]         
         customer_id = body['customer_id']
         email = body['email']
         now = str(int(time()))
 
         dynamodb = boto3.resource('dynamodb')
-        table = dynamodb.Table('t_customers')
+        table = dynamodb.Table(table_name)
 
         try:
                 response = table.update_item(

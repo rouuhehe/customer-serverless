@@ -1,4 +1,4 @@
-import json, uuid, boto3
+import json, uuid, boto3, os
 from time import time
 from botocore.exceptions import ClientError
 
@@ -9,6 +9,7 @@ def lambda_handler(event, context):
         else:
             body = event  
 
+        table_name = os.environ["TABLE_NAME"]
         customer_id = str(uuid.uuid4())
         now = str(int(time()))
 
@@ -24,7 +25,7 @@ def lambda_handler(event, context):
         }
 
         dynamodb = boto3.resource('dynamodb')
-        table = dynamodb.Table('t_customers')
+        table = dynamodb.Table(table_name)
         table.put_item(Item=customer_data)
 
         return_data = {k: v for k, v in customer_data.items() if k != 'password_hashed'}

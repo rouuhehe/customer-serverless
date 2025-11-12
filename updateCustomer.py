@@ -1,10 +1,11 @@
-import json, boto3
+import json, boto3, os
 from time import time
 from botocore.exceptions import ClientError
 
 def lambda_handler(event, context):
+        table_name = os.environ["TABLE_NAME"]
         dynamodb = boto3.resource('dynamodb')
-        table = dynamodb.Table('t_customers')
+        table = dynamodb.Table(table_name)
 
         # a diferencia de los otros lambdas, aqui los parametros vienen por pathParameters
         customer_id = event['pathParameters']['customerID']

@@ -1,3 +1,4 @@
+'''
 import boto3, json
 
 def lambda_handler(event, context):
@@ -13,3 +14,5 @@ def lambda_handler(event, context):
         "statusCode": 200,
         "body": json.dumps({"staff": res["Items"]})
     }
+
+    '''
