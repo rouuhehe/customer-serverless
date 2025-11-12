@@ -72,10 +72,10 @@ resources:
           - AttributeName: email
             KeyType: RANGE
         BillingMode: PAY_PER_REQUEST
-    GlobalSecondaryIndexes:
-          - IndexName: email-index
-            KeySchema:
-              - AttributeName: email
-                KeyType: HASH
-            Projection:
-              ProjectionType: ALL
+        GlobalSecondaryIndexes:
+              - IndexName: email-index
+                KeySchema:
+                  - AttributeName: email
+                    KeyType: HASH
+                Projection:
+                  ProjectionType: ALL
