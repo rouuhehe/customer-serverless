@@ -66,6 +66,8 @@ resources:
         AttributeDefinitions:
           - AttributeName: customer_id
             AttributeType: S
+          - AttributeName: email
+            AttributeType: S
         KeySchema:
           - AttributeName: customer_id
             KeyType: HASH
