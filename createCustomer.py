@@ -14,14 +14,14 @@ def lambda_handler(event, context):
         now = str(int(time()))
 
         customer_data = {
-            'customer_id': customer_id,
-            'name': body['name'].lower(),
-            'email': body['email'].lower(),
-            'createdAt': now,
-            'updatedAt': now,
-            'isActive': True,
-            'password_hashed': body['password'],
-            'phoneNumber': str(body['phone_number'])
+            "customer_id": customer_id,
+            "name": body['name'].lower(),
+            "email": body['email'].lower(),
+            "createdAt": now,
+            "updatedAt": now,
+            "isActive": True,
+            "password_hashed": body['password'],
+            "phoneNumber": str(body['phone_number'])
         }
 
         dynamodb = boto3.resource('dynamodb')

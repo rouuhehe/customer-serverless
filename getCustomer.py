@@ -10,10 +10,10 @@ def lambda_handler(event, context):
 
         response = table.get_item(
                 Key = {
-                    'customer_id': customer_id
+                    "customer_id": customer_id
                 }
         )
-
+#7027ace1-3cc8-4ac8-8993-ec1a70e4f490
         if 'Item' not in response:
             return {
                 "statusCode": 404, 

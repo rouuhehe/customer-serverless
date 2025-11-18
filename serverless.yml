@@ -66,16 +66,7 @@ resources:
         AttributeDefinitions:
           - AttributeName: customer_id
             AttributeType: S
-          - AttributeName: email
-            AttributeType: S
         KeySchema:
           - AttributeName: customer_id
             KeyType: HASH
         BillingMode: PAY_PER_REQUEST
-        GlobalSecondaryIndexes:
-              - IndexName: email-index
-                KeySchema:
-                  - AttributeName: email
-                    KeyType: HASH
-                Projection:
-                  ProjectionType: ALL
