@@ -21,7 +21,6 @@ def lambda_handler(event, context):
                 response = table.update_item(
                     Key = {
                             'customerID': customer_id,
-                            'email': email
                     },
                     UpdateExpression = "set isActive = :tilin , updatedAt = :v",
                     ExpressionAttributeValues = {
