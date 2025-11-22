@@ -1,6 +1,10 @@
+import hashlib
 import json, uuid, boto3, os
 from time import time
 from botocore.exceptions import ClientError
+    
+def hash_password(password):
+    return hashlib.sha256(password.encode()).hexdigest()
 
 def lambda_handler(event, context):
     try:
@@ -20,7 +24,7 @@ def lambda_handler(event, context):
             "createdAt": now,
             "updatedAt": now,
             "isActive": True,
-            "password_hashed": body['password'],
+            "password_hashed": hash_password(body['password']),
             "phoneNumber": str(body['phone_number'])
         }
 
