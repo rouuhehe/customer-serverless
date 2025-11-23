@@ -14,13 +14,11 @@ def lambda_handler(event, context):
             body = event  
 
         table_name = os.environ["TABLE_NAME"]
-        customer_id = str(uuid.uuid4())
         now = str(int(time()))
 
         customer_data = {
-            "customer_id": customer_id,
+            "customer_id": body['email'].lower(),
             "name": body['name'].lower(),
-            "email": body['email'].lower(),
             "createdAt": now,
             "updatedAt": now,
             "isActive": True,
